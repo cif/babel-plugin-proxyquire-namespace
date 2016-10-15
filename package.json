@@ -1,0 +1,31 @@
+{
+  "name": "babel-plugin-proxyquire-namespace",
+  "version": "1.0.0",
+  "description": "For use with namespaced importing and proxyquire",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "test": "mocha"
+  },
+  "keywords": [
+    "proxyquire",
+    "namespaces"
+  ],
+  "files": [
+    "README.md",
+    "lib"
+  ],
+  "author": "Ben Ipsen <email@benipsen.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-register": "^6.16.3",
+    "mocha": "^2.3.2"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
