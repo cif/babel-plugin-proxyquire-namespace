@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "babel src --out-dir lib",
-    "test": "mocha"
+    "test": "mocha --compilers js:babel-register test/"
   },
   "keywords": [
     "proxyquire",

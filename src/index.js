@@ -18,25 +18,33 @@ function namespacePlugin({types: t}) {
   return {
     visitor: {
       CallExpression(path, state) {
+        // regular import / require statements
+        const localState = setupDefaults(state, defaults);
+        if(path.node.callee.name === 'require') {
+          const source = path.node.arguments[0];
+          const rawVal = source.value.replace('\'', '');
+          handleNamespace(source, rawVal, localState);
+        }
 
+        // proxyquired calls.
         if (path.node.callee.name === 'proxyquire' ||
           path.node.callee.name === 'proxyquireStrict' ||
           path.node.callee.name === 'proxyquireNonStrict'
         ) {
 
-          var localState = setupDefaults(state, defaults);
-          var sourceObj = path.node.arguments[1];
-          sourceObj.properties.map((src) => {
-            var source = src.key;
-            if (!source.extra || !source.extra.rawValue) {
-              return;
-            }
 
-            var rawVal = source.extra.rawValue.replace('\'', '');
-            var val = '';
+          const sourceObj = path.node.arguments[1];
+          if (sourceObj && sourceObj.properties) {
+            sourceObj.properties.map((src) => {
+              const source = src.key;
+              if (!source.extra || !source.extra.rawValue) {
+                return;
+              }
 
-            handleNamespace(source, rawVal, localState);
-          });
+              const rawVal = source.extra.rawValue.replace('\'', '');
+              handleNamespace(source, rawVal, localState);
+            });
+          }
           return;
         }
       }

@@ -7,6 +7,7 @@ import plugin from '../src/';
 describe('babel-plugin-proxyquire-namespace', () => {
   it('should replace instances of <name-space> with values from config', () => {
     const result = transformFileSync('./test/fixtures/input.js', {
+      presets: ['es2015'],
       plugins: [
         [plugin, {
             namespaces: {
