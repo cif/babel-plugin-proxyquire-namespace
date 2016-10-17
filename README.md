@@ -1,12 +1,13 @@
-# Using Proxyquire & Namespaces
+## Using Proxyquire & Namespaces
 This is a simple plugin that allows you to use `<name-space>/moduleFile` syntax when smashing dependencies
 with [proxyquire](https://www.npmjs.com/package/proxyquire).
 
-As of today this only works with [babel-plugin-namespaces](https://www.npmjs.com/package/babel-plugin-namespaces)
-**Read the documentation for how to configure namespaces in package.json.**
+This plugin simply adds proxyquire method calls to [babel-plugin-namespaces](https://www.npmjs.com/package/babel-plugin-namespaces)
+**Read the documentation there for how to configure your namespaces in package.json.**
+This plugin includes functionality from the base plugin so you only need to install this one.
 
-This plugin itself does not need or use any configuration. Simply include `proxyquire-namespace` in your
-project's `.babelrc` or `package.json` babel plugins and your tests will pass again!
+Simply replace  `"namespaces"` key in babel plugins array with `"proxyquire-namespace"` and your
+tests will pass again!
 
 ## Example Usage
 
