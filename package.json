@@ -1,8 +1,12 @@
 {
   "name": "babel-plugin-proxyquire-namespace",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "For use with namespaced importing and proxyquire",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cif/babel-plugin-proxyquire-namespace"
+  },
   "scripts": {
     "build": "babel src --out-dir lib",
     "test": "mocha"
